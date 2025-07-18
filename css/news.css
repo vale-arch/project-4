@@ -1,0 +1,116 @@
+/*
+ * =============================================
+ *      News Page Stylesheet (news.css)
+ * =============================================
+ *
+ * Associated HTML File:
+ * - /html/news.html
+ */
+/*
+ * =============================================
+ *      News Page Styles
+ * =============================================
+ */
+
+#news-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+#news-header h1 {
+    font-size: 2.8rem;
+}
+
+#news-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column; /* Stack image on top of content on small screens */
+    background-color: var(--color-background);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(45, 52, 54, 0.1);
+}
+
+.news-image-placeholder {
+    height: 220px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Specific article images */
+.news-card:nth-child(1) .news-image-placeholder { background-image: url('https://images.unsplash.com/photo-1600488999834-32788a63c2a7?q=80&w=2940&auto=format&fit=crop'); } /* Bank/Finance */
+.news-card:nth-child(2) .news-image-placeholder { background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2940&auto=format&fit=crop'); } /* Agriculture */
+.news-card:nth-child(3) .news-image-placeholder { background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2940&auto=format&fit=crop'); } /* Tech */
+
+.news-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-category {
+    display: inline-block;
+    background-color: var(--color-secondary-accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+
+.news-content h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.news-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.news-summary {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.news-content .cta-button {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Responsive layout for wider screens */
+@media (min-width: 768px) {
+    .news-card {
+        flex-direction: row; /* Side-by-side layout */
+    }
+
+    .news-image-placeholder {
+        flex: 0 0 300px; /* Fixed width for the image */
+        height: auto;
+    }
+}

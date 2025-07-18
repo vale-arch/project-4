@@ -1,0 +1,127 @@
+/*
+ * =============================================
+ *      Contact Page Styles
+ * =============================================
+ */
+
+#contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+#contact-header h1 {
+    font-size: 2.8rem;
+}
+
+#contact-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+#contact-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-form-container {
+    background-color: var(--color-background-offset);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-headings);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary-accent);
+    box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.2);
+}
+
+.contact-form-container .cta-button {
+    background-color: var(--color-primary-accent);
+    color: var(--color-background);
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.contact-form-container .cta-button:hover {
+    background-color: #a80e1f;
+    text-decoration: none;
+}
+
+.contact-info-container {
+    padding-top: 1rem; /* Align top with form padding */
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--color-secondary-accent);
+    margin-top: 2px; /* Fine-tune vertical alignment */
+    flex-shrink: 0;
+}
+
+.contact-text h4 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    color: var(--color-headings);
+    font-size: 1.1rem;
+}
+
+.contact-text p {
+    margin: 0;
+    color: #6c757d;
+}
+
+.contact-text a {
+    color: var(--color-primary-accent);
+}
+
+.map-placeholder {
+    height: 180px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-style: italic;
+    border: 1px dashed #ccc;
+}

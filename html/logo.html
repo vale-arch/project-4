@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpliEcon Logo Design</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,184,148,0.3);
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: end;
+            gap: 3px;
+            height: 35px;
+        }
+
+        .bar {
+            width: 6px;
+            background: white;
+            border-radius: 3px;
+            opacity: 0.9;
+            animation: pulse 2s infinite;
+        }
+
+        .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 85%; animation-delay: 0.2s; }
+        .bar:nth-child(3) { height: 100%; animation-delay: 0.4s; }
+        .bar:nth-child(4) { height: 75%; animation-delay: 0.6s; }
+        .bar:nth-child(5) { height: 90%; animation-delay: 0.8s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2d3436;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .simpli {
+            color: #00b894;
+        }
+
+        .logo-text .econ {
+            color: #636e72;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #74b9ff;
+            margin: 10px 0 0 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .kenya-flag {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .flag-stripe {
+            height: 25%;
+            width: 100%;
+        }
+
+        .flag-black { background: #000; }
+        .flag-red { background: #ce1126; }
+        .flag-white { background: #fff; }
+        .flag-green { background: #007a3d; }
+
+        .variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .variation {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .variation:hover {
+            transform: translateY(-5px);
+        }
+
+        .variation h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .dark-bg {
+            background: #2d3436;
+            color: white;
+        }
+
+        .minimal {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+        }
+
+        .compact-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .compact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .compact-bars {
+            display: flex;
+            align-items: end;
+            gap: 2px;
+            height: 20px;
+        }
+
+        .compact-bar {
+            width: 3px;
+            background: white;
+            border-radius: 1px;
+        }
+
+        .compact-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3436;
+        }
+
+        .icon-only {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,184,148,0.3);
+        }
+
+        .usage-notes {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .usage-notes h3 {
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+
+        .usage-notes ul {
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            padding: 5px;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .color-primary { background: #00b894; }
+        .color-secondary { background: #00cec9; }
+        .color-accent { background: #74b9ff; }
+        .color-dark { background: #2d3436; }
+        .color-gray { background: #636e72; }
+
+        @media (max-width: 768px) {
+            .logo-main {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .logo-text {
+                font-size: 32px;
+            }
+            
+            .variations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo-main">
+            <div class="logo-icon">
+                <div class="chart-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div>
+                <h1 class="logo-text">
+                    <span class="simpli">Simpli</span><span class="econ">Econ</span>
+                </h1>
+                <p class="tagline">Kenya's Economy Simplified 
+                    <span class="kenya-flag">
+                        <div class="flag-stripe flag-black"></div>
+                        <div class="flag-stripe flag-red"></div>
+                        <div class="flag-stripe flag-white"></div>
+                        <div class="flag-stripe flag-green"></div>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="color-palette">
+            <div class="color-swatch color-primary">#00b894</div>
+            <div class="color-swatch color-secondary">#00cec9</div>
+            <div class="color-swatch color-accent">#74b9ff</div>
+            <div class="color-swatch color-dark">#2d3436</div>
+            <div class="color-swatch color-gray">#636e72</div>
+        </div>
+    </div>
+
+    <div class="variations">
+        <div class="variation">
+            <h3>Horizontal Layout</h3>
+            <div class="compact-logo">
+                <div class="compact-icon">
+                    <div class="compact-bars">
+                        <div class="compact-bar" style="height: 60%;"></div>
+                        <div class="compact-bar" style="height: 85%;"></div>
+                        <div class="compact-bar" style="height: 100%;"></div>
+                        <div class="compact-bar" style="height: 75%;"></div>
+                        <div class="compact-bar" style="height: 90%;"></div>
+                    </div>
+                </div>
+                <div class="compact-text">
+                    <span style="color: #00b894;">Simpli</span><span style="color: #636e72;">Econ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="variation dark-bg">
+            <h3 style="color: white;">Dark Theme</h3>
+            <div class="compact-logo">
+                <div class="compact-icon">
+                    <div class="compact-bars">
+                        <div class="compact-bar" style="height: 60%;"></div>
+                        <div class="compact-bar" style="height: 85%;"></div>
+                        <div class="compact-bar" style="height: 100%;"></div>
+                        <div class="compact-bar" style="height: 75%;"></div>
+                        <div class="compact-bar" style="height: 90%;"></div>
+                    </div>
+                </div>
+                <div class="compact-text" style="color: white;">
+                    <span style="color: #00cec9;">Simpli</span><span style="color: #ddd;">Econ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="variation minimal">
+            <h3>Minimal Version</h3>
+            <div class="compact-logo">
+                <div class="compact-text">
+                    <span style="color: #00b894;">SE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="variation">
+            <h3>Icon Only</h3>
+            <div class="icon-only">
+                <div class="chart-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="usage-notes">
+        <h3>Logo Usage Guidelines</h3>
+        <ul>
+            <li><strong>Primary Colors:</strong> Green gradient (#00b894 to #00cec9) represents growth and prosperity</li>
+            <li><strong>Chart Bars:</strong> Animated bars symbolize economic data and analysis</li>
+            <li><strong>Typography:</strong> Modern, clean font for accessibility</li>
+            <li><strong>Kenya Flag:</strong> Small flag accent shows local focus</li>
+            <li><strong>Responsive:</strong> Works well at all sizes from favicon to billboard</li>
+            <li><strong>Versatile:</strong> Horizontal, vertical, and icon-only versions available</li>
+            <li><strong>Professional:</strong> Suitable for both B2B and B2C audiences</li>
+        </ul>
+    </div>
+</body>
+</html>

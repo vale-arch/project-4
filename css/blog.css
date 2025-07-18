@@ -1,0 +1,149 @@
+/*
+ * =============================================
+ *      Blog Page Stylesheet (blog.css)
+ * =============================================
+ *
+ * Associated HTML File:
+ * - /html/blog.html
+ */
+/*
+ * =============================================
+ *      Blog Page Styles
+ * =============================================
+ */
+
+#blog-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+#blog-header h1 {
+    font-size: 2.8rem;
+}
+
+#blog-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.blog-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .blog-layout {
+        grid-template-columns: 3fr 1fr; /* Main content takes 3/4, sidebar 1/4 */
+    }
+}
+
+.blog-posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.blog-post-card {
+    background-color: var(--color-background);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(45, 52, 54, 0.1);
+}
+
+.blog-post-image {
+    height: 250px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Specific post images */
+.blog-post-card:nth-child(1) .blog-post-image { background-image: url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2940&auto=format&fit=crop'); } /* Money/Shilling */
+.blog-post-card:nth-child(2) .blog-post-image { background-image: url('https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=2839&auto=format&fit=crop'); } /* Charts/Data */
+.blog-post-card:nth-child(3) .blog-post-image { background-image: url('https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2940&auto=format&fit=crop'); } /* Shopping cart/Inflation */
+
+.blog-post-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-post-category {
+    display: inline-block;
+    background-color: var(--color-primary-accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+
+.blog-post-content h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.blog-post-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.blog-post-content p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.blog-post-content .cta-button {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Blog Sidebar */
+.sidebar-widget {
+    background-color: var(--color-background-offset);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.sidebar-widget h4 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--color-secondary-accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-widget ul {
+    list-style: none;
+}
+
+.sidebar-widget li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-widget a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.sidebar-widget a:hover {
+    color: var(--color-primary-accent);
+}
