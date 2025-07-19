@@ -296,6 +296,9 @@ header {
     z-index: 1000;
     box-shadow: 4px 0px 15px rgba(0,0,0,0.1);
     overflow-y: auto; /* Allow scrolling on long menus */
+    /* Add padding to the top to avoid overlapping with the header/close button. */
+    /* The header is 80px high. */
+    padding-top: 6rem;
   }
 
   body.sidebar-open .sidebar {
@@ -636,4 +639,42 @@ footer .logo-text { font-size: 22px; }
 
 #back-to-top-btn:hover {
   background-color: #a80e1f; /* Darker red */
+}
+
+/*
+ * =============================================
+ *      Homepage & Footer Responsive Tweaks
+ * =============================================
+ */
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  #hero {
+    padding: 3rem 1.5rem;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center; /* Center the columns when stacked */
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .footer-column ul {
+    display: inline-block; /* Allows centering of the list block */
+    text-align: left; /* Keep list items left-aligned for readability */
+  }
+}
+
+@media (max-width: 576px) {
+  #newsletter form {
+    flex-direction: column;
+  }
 }

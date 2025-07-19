@@ -125,3 +125,25 @@
     font-style: italic;
     border: 1px dashed #ccc;
 }
+
+/*
+ * =============================================
+ *      Responsive Styles
+ * =============================================
+ */
+
+@media (max-width: 992px) {
+    #contact-main {
+        grid-template-columns: 1fr;
+        gap: 2rem; /* Reduce gap on smaller screens */
+    }
+
+    .contact-info-container {
+        padding-top: 0; /* Remove top padding when stacked */
+    }
+}
+
+@media (max-width: 768px) {
+    #contact-header h1 { font-size: 2.2rem; }
+    .contact-form-container { padding: 1.5rem; }
+}
