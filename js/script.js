@@ -68,4 +68,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // --- Theme Toggle Logic ---
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Function to apply the theme to the HTML element
+    const applyTheme = (theme) => {
+        htmlElement.setAttribute('data-theme', theme);
+    };
+
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+            // Save the user's preference
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
+    // On page load, apply the saved theme or the user's system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    applyTheme(initialTheme);
 });
