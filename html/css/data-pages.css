@@ -16,7 +16,7 @@
 
 /* Header for data pages */
 #data-header {
-    border-bottom: 2px solid var(--color-background-offset);
+    border-bottom: 2px solid var(--color-border, #e0e0e0);
     padding-bottom: 1.5rem;
     margin-bottom: 2.5rem;
 }
@@ -28,8 +28,20 @@
 
 #data-header p {
     font-size: 1.1rem;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
     max-width: 800px;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*
@@ -46,17 +58,35 @@
 }
 
 .metric-card {
-    background-color: var(--color-background-offset);
+    background-color: var(--color-card-background, var(--color-background-offset));
     border-radius: 8px;
     padding: 1.5rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border, #e0e0e0);
     display: flex;
     flex-direction: column;
+    transition: background-color 0.2s ease-in-out, transform 0.3s ease-out;
+    /* Animation properties */
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+}
+
+/* Animation for when the card becomes visible */
+.metric-card.is-visible {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger the animation for a more dynamic effect */
+.metric-card:nth-child(2).is-visible {
+    animation-delay: 0.1s;
+}
+.metric-card:nth-child(3).is-visible {
+    animation-delay: 0.2s;
 }
 
 .metric-label {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
     margin-bottom: 0.5rem;
 }
 
@@ -73,10 +103,10 @@
     margin-top: 0.25rem;
 }
 
-.metric-trend.up { color: var(--color-primary-accent); }
-.metric-trend.down { color: #28a745; }
-.metric-trend.stable { color: #6c757d; }
-.metric-trend.neutral { color: #0984e3; } /* A neutral blue for informational trends */
+/* Use semantic colors for trends from the global stylesheet */
+.metric-trend.positive { color: var(--color-trend-positive); }
+.metric-trend.negative { color: var(--color-trend-negative); }
+.metric-trend.neutral { color: var(--color-trend-neutral); }
 
 /*
  * =============================================
@@ -85,12 +115,12 @@
  */
 
 .chart-placeholder {
-    background-color: var(--color-background-offset);
-    border: 1px dashed #ccc;
+    background-color: var(--color-card-background, var(--color-background-offset));
+    border: 1px dashed var(--color-border, #ccc);
     border-radius: 8px;
     padding: 4rem 2rem;
     text-align: center;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
 }
 
 .styled-table {
@@ -101,7 +131,7 @@
 
 .styled-table th, .styled-table td {
     padding: 12px 15px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border, #e0e0e0);
     text-align: left;
 }
 
@@ -112,13 +142,50 @@
 }
 
 .styled-table tbody tr:nth-child(even) {
-    background-color: var(--color-background-offset);
+    background-color: var(--color-card-background, var(--color-background-offset));
+}
+
+/* Styles for trend indicators within tables */
+.trend-positive {
+    color: var(--color-trend-positive);
+    font-weight: 500;
+}
+
+.trend-negative {
+    color: var(--color-trend-negative);
+    font-weight: 500;
+}
+
+#fiscal-policy {
+    background-color: var(--color-card-background, var(--color-background-offset));
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border, transparent);
+}
+
+#fiscal-policy h2 {
+    margin-top: 0;
+}
+
+#fiscal-policy p {
+    margin-bottom: 1rem;
+}
+
+#fiscal-policy ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+#fiscal-policy li {
+    margin-bottom: 0.5rem;
 }
 
 #data-notes {
-    background-color: var(--color-background-offset);
+    background-color: var(--color-card-background, var(--color-background-offset));
     padding: 1.5rem;
     border-radius: 8px;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
+    border: 1px solid var(--color-border, transparent);
 }

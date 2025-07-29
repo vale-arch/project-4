@@ -18,6 +18,9 @@
                         <span></span>
                     </div>
                 </button>
+                <button id="desktop-sidebar-toggle" aria-label="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
                 <a href="index.html" class="logo">
                     <div class="logo-icon">
                         <div class="chart-bars">
@@ -41,7 +44,7 @@
     </header>
 
     <div class="page-body-container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
@@ -101,14 +104,14 @@
                     <h3>Cost of Living Update</h3>
                     <p class="label">Annual Inflation Rate (CPI)</p>
                     <p class="stat">5.7%</p>
-                    <p class="trend up">▲ 0.2% vs last month</p>
+                    <p class="trend negative">▲ 0.2% vs last month</p>
                     <a href="html/cost-of-living.html" class="cta-button">View Details</a>
                 </article>
                 <article class="featured-card">
                     <h3>GDP Analysis</h3>
                     <p class="label">Most Recent Growth (Q4 2024)</p>
                     <p class="stat">4.9%</p>
-                    <p class="trend stable">● Holding steady</p>
+                    <p class="trend neutral">● Holding steady</p>
                     <a href="html/gdp-analysis.html" class="cta-button">View Details</a>
                 </article>
                 <article class="featured-card">
@@ -124,10 +127,13 @@
         <section id="newsletter">
             <h2>Join Our Newsletter</h2>
             <p>Get the latest news and updates delivered straight to your inbox.</p>
-            <form>
+            <form id="newsletter-form" novalidate>
                 <input type="email" name="email" placeholder="Enter your email address" required>
                 <button type="submit">Subscribe</button>
             </form>
+            <div id="newsletter-success-message" class="form-success-message" style="display: none;">
+                <p>✅ Thank you for subscribing! You're now on the list.</p>
+            </div>
         </section>
         </main>
     </div>
@@ -153,19 +159,33 @@
             </div>
             <div class="footer-column">
                 <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="html/about.html">About Us</a></li>
-                    <li><a href="html/blog.html">Blog</a></li>
-                    <li><a href="html/contact.html">Contact</a></li>
-                </ul>
+                <nav aria-label="Footer Quick Links">
+                    <ul>
+                        <li><a href="html/about.html">About Us</a></li>
+                        <li><a href="html/blog.html">Blog</a></li>
+                        <li><a href="html/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
             <div class="footer-column">
                 <h4>Data</h4>
-                <ul>
-                    <li><a href="html/cost-of-living.html">Cost of Living</a></li>
-                    <li><a href="html/gdp-analysis.html">GDP Analysis</a></li>
-                    <li><a href="html/economic-overview.html">Economic Overview</a></li>
-                </ul>
+                <nav aria-label="Footer Data Links">
+                    <ul>
+                        <li><a href="html/cost-of-living.html">Cost of Living</a></li>
+                        <li><a href="html/gdp-analysis.html">GDP Analysis</a></li>
+                        <li><a href="html/economic-overview.html">Economic Overview</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <nav aria-label="Footer Social Media Links">
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div class="footer-bottom">
@@ -174,7 +194,9 @@
     </footer>
 
     <div class="overlay"></div>
-    <button id="back-to-top-btn" title="Go to top">▲</button>
+    <button id="back-to-top-btn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
 
     <script src="js/script.js"></script>
 </body>

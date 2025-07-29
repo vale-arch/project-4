@@ -11,32 +11,41 @@
 
     <header>
         <div class="header-container">
-            <button id="mobile-nav-toggle" aria-label="Open navigation menu">
-                <div class="hamburger-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <a href="../index.html" class="logo">
-                <div class="logo-icon">
-                    <div class="chart-bars">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
+            <div class="header-left">
+                <button id="mobile-nav-toggle" aria-label="Open navigation menu">
+                    <div class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                </div>
-                <div class="logo-text">
-                    <span class="simpli">Simpli</span><span class="econ">Econ</span>
-                </div>
-            </a>
+                </button>
+                <button id="desktop-sidebar-toggle" aria-label="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <a href="../index.html" class="logo">
+                    <div class="logo-icon">
+                        <div class="chart-bars">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="simpli">Simpli</span><span class="econ">Econ</span>
+                    </div>
+                </a>
+            </div>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
         </div>
     </header>
 
     <div class="page-body-container">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <nav class="main-nav">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
@@ -64,7 +73,7 @@
 
             <section id="contact-main">
                 <div class="contact-form-container">
-                    <form action="#" method="POST">
+                    <form id="contact-form" action="#" method="POST" novalidate>
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -83,6 +92,10 @@
                         </div>
                         <button type="submit" class="cta-button">Send Message</button>
                     </form>
+                    <div id="form-success-message" class="form-success-message" style="display: none;">
+                        <h4>Thank you!</h4>
+                        <p>Your message has been sent successfully. We'll get back to you shortly.</p>
+                    </div>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-item">
@@ -136,19 +149,33 @@
             </div>
             <div class="footer-column">
                 <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                <nav aria-label="Footer Quick Links">
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
             <div class="footer-column">
                 <h4>Data</h4>
-                <ul>
-                    <li><a href="cost-of-living.html">Cost of Living</a></li>
-                    <li><a href="gdp-analysis.html">GDP Analysis</a></li>
-                    <li><a href="economic-overview.html">Economic Overview</a></li>
-                </ul>
+                <nav aria-label="Footer Data Links">
+                    <ul>
+                        <li><a href="cost-of-living.html">Cost of Living</a></li>
+                        <li><a href="gdp-analysis.html">GDP Analysis</a></li>
+                        <li><a href="economic-overview.html">Economic Overview</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <nav aria-label="Footer Social Media Links">
+                    <ul>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div class="footer-bottom">
@@ -157,7 +184,9 @@
     </footer>
 
     <div class="overlay"></div>
-    <button id="back-to-top-btn" title="Go to top">▲</button>
+    <button id="back-to-top-btn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
 
     <script src="../js/script.js"></script>
 </body>

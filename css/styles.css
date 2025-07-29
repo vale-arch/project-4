@@ -19,6 +19,9 @@
   --color-background: #ffffff;
   --color-background-offset: #f8f9fa; /* Very Light Grey */
 
+  /* A subtle pattern to add texture to the background */
+  --background-pattern: url("data:image/svg+xml,%3csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0 0h4v4H0V0zm4 4h4v4H4V4z' fill='%232d3436' fill-opacity='0.03' fill-rule='evenodd'/%3e%3c/svg%3e");
+
   /* Accent Colors */
   --color-primary-accent: #ce1126;   /* Vibrant Red for CTAs */
   --color-secondary-accent: #00b894; /* Deep Green for Branding */
@@ -26,11 +29,19 @@
   /* Text & Headers */
   --color-text: #212529;             /* Strong Black/Dark Grey */
   --color-headings: #2d3436;
+
+  /* Trend Colors */
+  --color-trend-positive: #28a745;
+  --color-trend-negative: var(--color-primary-accent);
+  --color-trend-neutral: #6c757d;
 }
 
 html[data-theme="dark"] {
   --color-background: #212529;
   --color-background-offset: #2d3436;
+  /* A lighter version of the pattern for dark mode */
+  --background-pattern: url("data:image/svg+xml,%3csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0 0h4v4H0V0zm4 4h4v4H4V4z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3e%3c/svg%3e");
+
   /* Use brighter accents for better contrast on a dark background */
   --color-primary-accent: #e53935; /* Brighter Red */
   --color-secondary-accent: #26a69a; /* Brighter Green */
@@ -45,7 +56,22 @@ html[data-theme="dark"] {
   --color-input-focus-glow: rgba(38, 166, 154, 0.3);
   --color-nav-hover-background: rgba(255, 255, 255, 0.08);
   --color-muted-text: #868e96;
+
+  /* Override neutral trend for dark theme */
+  --color-trend-neutral: var(--color-muted-text);
 }
+
+/*
+ * =============================================
+ *      Page Transition Animations
+ * =============================================
+ */
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+body.fade-out { animation: fadeOut 0.4s ease-out forwards; }
+
 /*
  * =============================================
  *      Global Resets & Base Styles
@@ -60,6 +86,7 @@ html[data-theme="dark"] {
 
 body {
   background-color: var(--color-background);
+  background-image: var(--background-pattern);
   color: var(--color-text);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -67,6 +94,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* Animation for page load */
+  opacity: 0;
+  animation: fadeIn 0.4s ease-in forwards;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -148,6 +178,33 @@ header {
   padding: 0; /* Reset padding */
   margin-right: 1rem; /* Space between toggle and logo */
   z-index: 1001; /* Above sidebar */
+}
+
+/* Desktop Sidebar Toggle */
+#desktop-sidebar-toggle {
+  display: block; /* Show on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 0.75rem;
+  color: var(--color-headings);
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+#desktop-sidebar-toggle:hover {
+  background-color: var(--color-nav-hover-background, #e9ecef);
+}
+
+#desktop-sidebar-toggle svg {
+  transition: transform 0.3s ease-in-out;
+  display: block; /* Prevents extra space below SVG */
+}
+
+/* Rotate icon when sidebar is collapsed */
+body.sidebar-collapsed #desktop-sidebar-toggle svg {
+  transform: rotate(180deg);
 }
 
 .hamburger-icon span {
@@ -266,6 +323,12 @@ html[data-theme='dark'] .sun-icon { display: none; }
   background-color: var(--color-background-offset);
   padding: 2rem 1rem;
   border-right: 1px solid var(--color-border, #e0e0e0);
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* State for when the sidebar is collapsed on desktop */
+body.sidebar-collapsed .sidebar {
+  margin-left: -250px;
 }
 
 .main-nav ul {
@@ -350,6 +413,10 @@ html[data-theme='dark'] .main-nav a {
     display: block;
   }
 
+  #desktop-sidebar-toggle {
+    display: none; /* Hide desktop toggle on mobile */
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -363,6 +430,11 @@ html[data-theme='dark'] .main-nav a {
     /* Add padding to the top to avoid overlapping with the header/close button. */
     /* The header is 80px high. */
     padding-top: 6rem;
+  }
+
+  /* Ensure collapsed state doesn't affect mobile view */
+  body.sidebar-collapsed .sidebar {
+    margin-left: 0;
   }
 
   body.sidebar-open .sidebar {
@@ -537,24 +609,23 @@ html[data-theme='dark'] .featured-card:hover {
   margin-bottom: 0.25rem;
   line-height: 1.2;
 }
-
 .featured-card .trend {
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
-/* For inflation, an increase is often seen as negative, hence red. */
-.featured-card .trend.up {
-  color: var(--color-primary-accent);
+/* Use semantic colors for trends */
+.featured-card .trend.positive {
+  color: var(--color-trend-positive);
 }
 
-.featured-card .trend.down {
-  color: #28a745; /* Green for down */
+.featured-card .trend.negative {
+  color: var(--color-trend-negative);
 }
 
-.featured-card .trend.stable {
-  color: #6c757d; /* Grey for stable */
+.featured-card .trend.neutral {
+  color: var(--color-trend-neutral);
 }
 
 .featured-card .news-headline {
@@ -612,6 +683,28 @@ html[data-theme='dark'] .featured-card:hover {
 
 #newsletter button:hover {
   background-color: #a80e1f; /* Darker red on hover */
+}
+
+/* Styles for newsletter form validation and success */
+#newsletter.form-submitted input:invalid {
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 0 0 3px rgba(206, 17, 38, 0.2);
+}
+
+#newsletter .form-success-message {
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  padding: 1rem;
+  border: 2px dashed var(--color-secondary-accent);
+  border-radius: 25px;
+  background-color: var(--color-background);
+}
+
+#newsletter .form-success-message p {
+  margin: 0;
+  color: var(--color-secondary-accent);
+  font-weight: 500;
 }
 
 /*
@@ -703,10 +796,12 @@ footer .logo-text { font-size: 22px; }
   background-color: var(--color-primary-accent);
   color: white;
   cursor: pointer;
-  padding: 12px 15px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  font-size: 18px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
   opacity: 0;
   visibility: hidden;
@@ -758,5 +853,14 @@ footer .logo-text { font-size: 22px; }
 @media (max-width: 576px) {
   #newsletter form {
     flex-direction: column;
+  }
+
+  /* Adjust featured card content for better mobile viewing */
+  .featured-card {
+    padding: 1.25rem;
+  }
+
+  .featured-card .stat {
+    font-size: 2.2rem;
   }
 }

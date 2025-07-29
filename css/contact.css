@@ -16,7 +16,7 @@
 
 #contact-header p {
     font-size: 1.1rem;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
 }
 
 #contact-main {
@@ -28,10 +28,11 @@
 }
 
 .contact-form-container {
-    background-color: var(--color-background-offset);
+    background-color: var(--color-card-background, var(--color-background-offset));
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border, #e0e0e0);
+    transition: background-color 0.2s ease-in-out;
 }
 
 .form-group {
@@ -49,18 +50,27 @@
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-border, #ccc);
     border-radius: 6px;
     font-size: 1rem;
     font-family: inherit;
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: var(--color-input-background, var(--color-background));
+    color: var(--color-text);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-secondary-accent);
-    box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.2);
+    box-shadow: 0 0 0 3px var(--color-input-focus-glow, rgba(0, 184, 148, 0.2));
+}
+
+/* Style for invalid fields after submission attempt */
+.form-submitted input:invalid,
+.form-submitted textarea:invalid {
+    border-color: var(--color-primary-accent);
+    box-shadow: 0 0 0 3px rgba(206, 17, 38, 0.2);
 }
 
 .contact-form-container .cta-button {
@@ -77,6 +87,23 @@
 .contact-form-container .cta-button:hover {
     background-color: #a80e1f;
     text-decoration: none;
+}
+
+.form-success-message {
+    text-align: center;
+    padding: 2rem;
+    border: 2px dashed var(--color-secondary-accent);
+    border-radius: 8px;
+    background-color: var(--color-background);
+}
+
+.form-success-message h4 {
+    color: var(--color-secondary-accent);
+    font-size: 1.5rem;
+}
+
+.form-success-message p {
+    color: var(--color-text);
 }
 
 .contact-info-container {
@@ -106,7 +133,7 @@
 
 .contact-text p {
     margin: 0;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
 }
 
 .contact-text a {
@@ -115,15 +142,15 @@
 
 .map-placeholder {
     height: 180px;
-    background-color: #e9ecef;
+    background-color: var(--color-background-offset, #e9ecef);
     border-radius: 8px;
     margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
+    color: var(--color-muted-text, #6c757d);
     font-style: italic;
-    border: 1px dashed #ccc;
+    border: 1px dashed var(--color-border, #ccc);
 }
 
 /*
